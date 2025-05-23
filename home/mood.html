@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>기분 통계</title>
+  <link rel="stylesheet" href="mood.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+</head>
+<body>
+  <div class="sidebar">
+    <div class="user-info">
+      <div class="user-img"></div>
+      <div id="sidebarUserName" class="user-name">홍길동</div>
+      <div class="user-status">집이 좋은 길동🏠</div>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">🗓️ 투두리스트</a>
+      <a href="my.html">👤 마이페이지</a>
+      <a href="mood.html" class="active">📊 통계</a>
+    </nav>
+
+    <div class="notifications">
+      <h3>알림</h3>
+      <p>새 알림이 없습니다.</p>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h1>이번 달 기분 통계</h1>
+      <div class="month-selector">
+        <button id="prevMonth">&lt; 이전달</button>
+        <span id="monthYear"></span>
+        <button id="nextMonth">다음달 &gt;</button>
+      </div>
+      <canvas id="moodChart"></canvas>
+    </div>
+  </div>
+
+  <script src="mood.js"></script>
+</body>
+</html>

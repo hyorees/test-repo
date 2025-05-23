@@ -1,0 +1,601 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    min-width: 200px;
+    max-width: 400px;
+    height: 100vh;
+    background-color: rgba(37, 113, 69, 0.9);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-right: 1px solid #eee;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    resize: horizontal;
+    overflow: auto;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0 20px 0;
+    border-bottom: 1px solid #e1ffe0;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2.5px solid #547b64;
+    /* 테두리만 캘린더 테두리 색으로 변경 */
+    margin-bottom: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='22' r='10' fill='%23547b64'/%3E%3Crect x='15' y='36' width='30' height='16' rx='8' fill='%23547b64'/%3E%3C/svg%3E");
+    /* 아이콘 색상도 캘린더 테두리 색으로 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.profile-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #4B3F2A;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    letter-spacing: 0.03em;
+}
+
+/* 밑줄 없애기, 커서 포인터 적용 (특정 클래스) */
+.profile-name,
+.title {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    /* 부모 색상 상속 */
+}
+
+.friends-section {
+    margin-top: 20px;
+}
+
+.friends-section h3 {
+    color: white;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.friend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.friend-item:hover {
+    background-color: rgba(21, 64, 39, 0.9);
+}
+
+.friend-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #fff !important;
+    border: 2px solid #547b64;
+    /* 테두리만 캘린더 테두리 색으로 변경 */
+    margin-right: 12px;
+    object-fit: cover;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='22' r='10' fill='%23547b64'/%3E%3Crect x='15' y='36' width='30' height='16' rx='8' fill='%23547b64'/%3E%3C/svg%3E");
+    /* 아이콘 색상도 캘린더 테두리 색으로 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.friend-name {
+    font-size: 0.9em;
+    color: white;
+}
+
+.container {
+    margin-left: 300px;
+    margin-right: 100px;
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: calc(100vw - 400px);
+    position: relative;
+}
+
+.calendar-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: url('https://cdn.pixabay.com/photo/2017/08/30/10/30/leaf-2696948_1280.png') center / cover no-repeat;
+    border-radius: 16px 16px 0 0;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.calendar-section {
+    position: relative;
+    padding-top: 140px;
+    flex: 2 1 600px;
+    height: 800px;
+    min-width: 500px;
+    max-width: 750px;
+    padding: 24px;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 8px 15px rgba(0, 100, 0, 0.2);
+    border: 2px solid #547b64;
+}
+
+.todo-section {
+    flex: 1.5;
+    height: 650px;
+    min-width: 400px;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 8px 15px rgba(0, 80, 0, 0.25);
+    padding: 24px;
+    border: 2px solid #547b64;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #547b64;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='22' r='10' fill='%23547b64'/%3E%3Crect x='15' y='36' width='30' height='16' rx='8' fill='%23547b64'/%3E%3C/svg%3E");
+    /* 아이콘 색상 변경 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    object-fit: cover;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.search {
+    margin-left: auto;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0 10px 0;
+    background-color: white;
+    border-radius: 12px;
+    padding: 5px;
+    color: rgb(1, 53, 5);
+}
+
+.calendar {
+    width: 95%;
+    border-collapse: collapse;
+    border: 1.5px solid #547b64;
+    margin-bottom: 4ch;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.calendar th {
+    background-color: #547b64;
+    color: white;
+    font-weight: bold;
+    padding: 6px 0;
+}
+
+.calendar td {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 3px;
+    position: relative;
+    color: #2e7d32;
+}
+
+.calendar td:hover {
+    color: #000801;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.calendar td.selected {
+    background-color: #388e3c;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.calendar td.has-mood .mood-icon {
+    color: #055209;
+}
+
+.calendar tr {
+    height: 60px;
+}
+
+.mood-icon {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3em;
+    display: none;
+}
+
+.calendar td.has-mood .mood-icon {
+    display: block;
+}
+
+.calendar td.selected {
+    background: none;
+    font-weight: bold;
+    border: none;
+    text-decoration: underline;
+    color: #00360e;
+}
+
+.calendar td.has-mood {
+    border: none;
+}
+
+.calendar td.sunday {
+    color: #ff0000;
+}
+
+.calendar td.sunday:hover {
+    color: #a00000;
+}
+
+.mood-select {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0;
+    font-size: 2em;
+}
+
+.mood-select span {
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin: 0;
+}
+
+.mood-select span.selected {
+    transform: scale(1.2);
+    background: white;
+    border-radius: 50%;
+}
+
+.memo-section {
+    margin-top: 10px;
+}
+
+.memo-section textarea {
+    width: 96%;
+    border-radius: 8px;
+    border: 1px solid #113c08;
+    padding: 8px;
+    resize: vertical;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.memo-section button {
+    margin-top: 6px;
+    float: right;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #0e4a38;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.todo-section h2 {
+    margin-top: 0;
+}
+
+.todo-section h2::before {
+    content: "🌱";
+    font-size: 1em;
+    margin-right: 8px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.tab {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #81c784, #4caf50);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 80, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    transform: scale(1.05) translateZ(10px);
+    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background: linear-gradient(135deg, #388e3c, #2e7d32);
+    box-shadow: 0 5px 10px rgba(0, 100, 0, 0.6);
+    color: white;
+}
+
+#todoInput {
+    margin-top: 15px;
+    width: 85%;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid #547b64;
+    font-size: 0.9em;
+    background-color: #ddd3d3;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#todayBtn {
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#todayBtn:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+    transform: scale(1.05);
+}
+
+#categorySelect {
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 0.7em;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#categorySelect:hover,
+#categorySelect:focus {
+    background-color: #e3f7eb;
+    border-color: #abc4b6;
+}
+
+#categorySelect option {
+    border-radius: 10px;
+    padding: 8px;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
+}
+
+#categorySelect option:hover {
+    background-color: #98dfb4;
+    color: #fff;
+}
+
+#newCategoryInput {
+    flex: 1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #2a4c36;
+    font-size: 0.9em;
+    background-color: #ffffff;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#newCategoryInput:focus {
+    border-color: #274e2e;
+    box-shadow: 0 0 6px rgba(74, 146, 206, 0.3);
+    outline: none;
+}
+
+#addNewCategoryButton {
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addNewCategoryButton:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+}
+
+#addNewCategoryButton:active {
+    background: linear-gradient(135deg, #388e3c, #1b4d1b);
+}
+
+#addTodo {
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addTodo:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+}
+
+#addTodo:active {
+    background: linear-gradient(135deg, #388e3c, #1b4d1b);
+}
+
+#todoList {
+    list-style: none;
+    padding: 0;
+}
+
+#todoList li {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+}
+
+#todoList li span {
+    flex: 1;
+    margin-left: 8px;
+}
+
+#todoList li.completed span {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+#todoList li button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #547b64;
+    margin-left: 4px;
+}
+
+#todoList li button:first-of-type {
+    margin-right: 8px;
+}
+
+#todoList li button:last-of-type {
+    color: #e57373;
+}
+
+#todoList li button:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.category-section {
+    margin-bottom: 20px;
+}
+
+#categoryTodoContainer {
+    margin-top: 20px;
+}
+
+.category-todo {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #547b64;
+}
+
+.category-todo h3 {
+    margin-bottom: 10px;
+}
+
+.category-todo input[type="text"] {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 80%;
+}
+
+.category-todo button {
+    padding: 6px 16px;
+    border-radius: 8px;
+    background: #7aa18b;
+    color: white;
+    cursor: pointer;
+}
+
+.category-todo ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.category-todo ul li {
+    padding: 5px 0;
+}
+
+/* 링크 밑줄 제거 및 커서 변경 적용 (특정 클래스) */
+.profile-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    /* 유지 */
+}
+
+.profile-name:hover,
+.title:hover {
+    color: #9d9d9d;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}

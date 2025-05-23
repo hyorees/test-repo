@@ -1,0 +1,118 @@
+git pull origin main --rebasegit pull origin main --rebase<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>기분 & 할일 캘린더</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="profile-section">
+            <div class="profile-image"></div>
+            <a href="my.html" class="profile-name">My Profile</a>
+        </div>
+        <div class="friends-section">
+            <h3>Friends</h3>
+            <div class="friend-list">
+                <div class="friend-item">
+                    <div class="friend-profile"></div>
+                    <div class="friend-name">박효연</div>
+                </div>
+                <div class="friend-item">
+                    <div class="friend-profile"></div>
+                    <div class="friend-name">심민서</div>
+                </div>
+                <div class="friend-item">
+                    <div class="friend-profile"></div>
+                    <div class="friend-name">정주형</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="calendar-section">
+            <header>
+                <div class="profile"></div>
+                <a href="my.html" class="title">프로필</a>
+                <input type="text" class="search" placeholder="검색" />
+            </header>
+
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <span id="monthYear"></span>
+                <button id="nextMonth">&gt;</button>
+                <button id="todayBtn">오늘</button>
+            </div>
+
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>토</th>
+                    </tr>
+                </thead>
+                <tbody id="calendarBody"></tbody>
+            </table>
+
+            <div class="mood-select">
+                <span data-mood="happy">😊</span>
+                <span data-mood="sad">😢</span>
+                <span data-mood="angry">😠</span>
+                <span data-mood="neutral">😐</span>
+                <span data-mood="tired">🥱</span>
+                <span data-mood="smile">😁</span>
+            </div>
+
+            <div class="memo-section">
+                <label for="memo">메모</label>
+                <textarea id="memo" rows="4"></textarea>
+                <button id="saveMemo">저장</button>
+            </div>
+        </section>
+
+        <section class="todo-section">
+            <h2>오늘의 할일</h2>
+
+            <div class="tabs">
+                <button class="tab active" data-category="">전체</button>
+                <button class="tab" data-category="work">🏫</button>
+                <button class="tab" data-category="personal">🙎‍♀️</button>
+                <button class="tab" data-category="exercise">🏊</button>
+                <button class="tab" data-category="shopping">🛒</button>
+            </div>
+
+            <div class="category-section">
+                <label for="categorySelect">카테고리 선택:</label>
+                <select id="categorySelect">
+                    <option value="">기본</option>
+                    <option value="work">🏫 학교</option>
+                    <option value="personal">🙎‍♀️ 개인</option>
+                    <option value="exercise">🏊 운동</option>
+                    <option value="shopping">🛒 쇼핑</option>
+                    <option value="new">새 카테고리 만들기</option>
+                </select>
+                <button id="addTodo">+</button>
+                <div id="newCategoryDiv" style="display: none;">
+                    <input type="text" id="newCategoryInput" placeholder="새 카테고리 이름을 입력하세요" />
+                    <button id="addNewCategoryButton">카테고리 추가</button>
+                </div>
+                <input type="text" id="todoInput" placeholder="할 일을 입력하세요" />
+            </div>
+
+            <ul id="todoList"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

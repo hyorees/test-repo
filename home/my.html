@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마이페이지</title>
+  <link rel="stylesheet" href="my.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="user-info">
+      <div class="user-img"></div>
+      <div id="sidebarUserName" class="user-name">홍길동</div>
+      <div class="user-status">집이 좋은 길동🏠</div>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">🗓️ 투두리스트</a>
+      <a href="my.html" class="active">👤 마이페이지</a>
+      <a href="mood.html">📊 통계</a>
+    </nav>
+
+    <div class="notifications">
+      <h3>알림</h3>
+      <p>새 알림이 없습니다.</p>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1>MY PAGE</h1>
+    <div class="container">
+      <section class="profile">
+        <h2>프로필 수정</h2>
+        <div class="user-img" id="sidebarUserImg">
+          <label for="profileImageInput" class="edit-icon" title="프로필 사진 변경">
+            ✏️
+          </label>
+          <input type="file" id="profileImageInput" accept="image/*" style="display:none" />
+        </div>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" placeholder="이름 입력" />
+
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" placeholder="이메일 입력" />
+
+        <label for="phone">전화번호</label>
+        <input type="tel" id="phone" name="phone" placeholder="전화번호 입력" />
+
+        <button type="button" id="updateProfileBtn">수정</button>
+      </section>
+
+      <section class="friends">
+        <h2>친구 관리</h2>
+        <ul>
+          <li>
+            <div class="friend-info">
+              <div class="friend-img"></div>
+              <span class="friend-name">박효연</span>
+            </div>
+            <button type="button" class="deleteFriendBtn">삭제</button>
+          </li>
+          <li>
+            <div class="friend-info">
+              <div class="friend-img"></div>
+              <span class="friend-name">심민서</span>
+            </div>
+            <button type="button" class="deleteFriendBtn">삭제</button>
+          </li>
+          <li>
+            <div class="friend-info">
+              <div class="friend-img"></div>
+              <span class="friend-name">정주영</span>
+            </div>
+            <button type="button" class="deleteFriendBtn">삭제</button>
+          </li>
+        </ul>
+      </section>
+
+
+    </div>
+
+    <a href="#" class="logout-btn" id="logoutBtn">로그아웃</a>
+  </div>
+
+  <script src="my.js"></script>
+</body>
+
+</html>
